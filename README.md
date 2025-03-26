@@ -1,168 +1,113 @@
-# Prometheus_Round2
-This repository is made for file submission of prometheus tech team recruitments round 2(software domain)
+Table of Contents
+	1.	Task 1: Ball Detection Dataset and Model Training
+	•	Dataset Creation
+	•	Model Training
+	•	Model Evaluation and Fine-Tuning
+	•	Inference and Testing
+	•	Model Deployment
+	•	Future Improvements
+	2.	Task 2: Player Rating Prediction
+	•	Methodology and Findings
+	•	Machine Learning Part
+	•	Feature Selection Justification
+	•	Model Choice Explanation
+	•	Basic Performance Metrics
+	3.	Conclusion
 
-TASK 1
-Ball Detection Dataset and Model Training
+⸻
 
-Methodology
+Task 1: Ball Detection Dataset and Model Training
 
 1. Dataset Creation
-
-Roboflow Dataset Generation
-
-The Ball Detection dataset was created using Roboflow by uploading and annotating images.
-
-Bounding boxes were used to mark the balls in the images for precise annotation.
-
-The dataset was limited to 20 images, ensuring high-quality annotations for each image.
-
-The dataset was split into training (13 images) and validation (4 images) sets to evaluate model performance.
-
-Exporting the Dataset
-
-Once annotation was completed, the dataset was exported in the YOLOv8 format.
-
-The dataset included .txt files for labels and .jpg files for images, following YOLO’s format (class, x_center, y_center, width, height).
+	•	Roboflow Dataset Generation:
+	•	The Ball Detection dataset was created using Roboflow, where 20 images were annotated with bounding boxes around the balls.
+	•	The dataset was split into training (13 images) and validation (4 images) sets.
+	•	The dataset was exported in the YOLOv8 format, containing both images and their corresponding annotation files.
+	•	Exporting the Dataset:
+	•	After annotation, the dataset was exported in the YOLOv8 format, which is suitable for training object detection models. Each image has a corresponding .txt file with the annotation (class, x_center, y_center, width, height).
 
 2. Model Training
-
-Environment Setup
-
-Google Colab was used to leverage free GPU resources for model training.
-
-YOLOv8 Setup
-
-The YOLOv8 model was selected due to its efficiency and accuracy in object detection tasks.
-
-Training Configuration
-
-The model was trained using YOLOv8’s built-in functionalities.
-
-Configurations included input size, batch size, and epochs for optimized training.
-
-The Adam optimizer was used to adjust model weights during training.
-
-Both training and validation data were used to monitor performance.
+	•	Environment Setup:
+	•	Google Colab was used to train the model with GPU support, providing the necessary environment for efficient model training.
+	•	YOLOv8 Setup:
+	•	The YOLOv8 model was chosen due to its efficiency and high performance in real-time object detection tasks.
+	•	Training Configuration:
+	•	The model was trained using the training set, with the YOLOv8 framework handling data loading, model configuration, and optimization through the Adam optimizer.
 
 3. Model Evaluation and Fine-Tuning
-
-Metrics
-
-Key metrics monitored included mean average precision (mAP) and Intersection over Union (IoU).
-
-These metrics helped determine how well the model was detecting objects (balls) in images.
-
-Hyperparameter Tuning
-
-If the validation performance was unsatisfactory, hyperparameters such as learning rate and batch size were adjusted and retraining was performed.
+	•	Metrics:
+	•	Key metrics like Mean Average Precision (mAP) and Intersection over Union (IoU) were monitored during training to assess model performance.
+	•	Hyperparameter Tuning:
+	•	Hyperparameters such as learning rate, batch size, and epochs were adjusted to optimize the model’s accuracy.
 
 4. Inference and Testing
-
-Model Inference
-
-The trained model was tested on new, unseen images to assess its generalization capabilities.
-
-Test images were processed through the model, and predictions were visualized with bounding boxes.
-
-Prediction Results
-
-The output included bounding box coordinates and class labels (ball).
-
-The model successfully detected balls in test images, confirming effective training.
+	•	Model Inference:
+	•	After training, the model was tested on new, unseen images to predict the location of the ball using bounding boxes.
+	•	Prediction Results:
+	•	The model successfully detected balls in test images, demonstrating its ability to generalize to new data.
 
 5. Model Deployment
-
-Model Saving
-
-The trained model was saved in a .pt format (PyTorch), making it suitable for future deployment.
-
-Download and Usage
-
-The model was downloaded for future use in real-time applications or further testing.
+	•	Model Saving:
+	•	The trained model was saved in a standard format (.pt for PyTorch models), allowing it to be reused for further testing or deployment.
+	•	Download and Usage:
+	•	The saved model file was downloaded for future use, enabling its application in real-time ball detection.
 
 6. Future Improvements
+	•	Dataset Expansion:
+	•	Expanding the dataset with more images and annotations will enhance model performance.
+	•	Data Augmentation:
+	•	Techniques like flipping, rotation, and scaling could be applied to the dataset to increase its diversity.
+	•	Hyperparameter Tuning:
+	•	Further fine-tuning of hyperparameters will improve model accuracy and robustness.
 
-Dataset Expansion
-
-Increasing the dataset size would enhance the model’s ability to generalize in real-world scenarios.
-
-Data Augmentation
-
-Techniques such as flipping, rotation, and scaling could improve dataset diversity.
-
-Hyperparameter Tuning
-
-Further adjustments in learning rate, batch size, and epochs could enhance model accuracy.
-
-This methodology ensures a structured approach to dataset creation, model training, evaluation, and deployment for ball detection using YOLOv8.
+⸻
 
 Task 2: Player Rating Prediction
 
 Methodology and Findings
 
 1. Data Exploration
-
-The first step in the analysis was to explore the available data in the European Soccer Database. The database contains multiple tables, including information about players, matches, teams, and leagues. The focus was on the Player_Attributes table, which provides details such as player ratings, attributes, and related information.
-
-The dataset structure was analyzed by checking available columns, identifying missing values, and removing duplicates.
-
-Summary statistics were computed for key variables such as player rating, potential, and physical attributes (height, weight, etc.) to gain insights into the data distribution.
+	•	Dataset Overview:
+	•	The data was sourced from the European Soccer Database, with a focus on the Player_Attributes table, which contains information about players, including their attributes and ratings.
+	•	Data Exploration Process:
+	•	The first step was to check the structure of the data and identify any missing or duplicate values.
+	•	Basic statistics were calculated for key variables such as player ratings, potential, and physical attributes (e.g., height, weight).
 
 2. Visualizations
-
-Three key visualizations were generated to better understand the data:
-
-Age Distribution: A histogram of player ages was created to analyze the age demographics and understand if younger or older players tend to have better ratings.
-
-Rating Distribution: A histogram of overall player ratings helped identify any skewness or imbalance in the rating data.
-
-Correlation Heatmap: A heatmap of feature correlations helped determine the relationships between different player attributes (such as passing, dribbling, and shooting) and their potential impact on player ratings.
-
-These visualizations provided meaningful insights and guided the feature selection process.
+	•	Age Distribution:
+	•	A histogram was created to visualize the distribution of player ages. It helped to analyze whether younger or older players tend to have higher ratings.
+	•	Rating Distribution:
+	•	A histogram was also used to visualize how player ratings are distributed, revealing whether the ratings are skewed or evenly spread.
+	•	Correlation Heatmap:
+	•	A correlation heatmap was generated to identify relationships between various player attributes, such as passing, dribbling, and shooting. This helped in understanding which features are most influential in predicting player ratings.
 
 Machine Learning Part: Player Rating Prediction
 
 Feature Selection Justification
 
-The following features were chosen based on their potential influence on player ratings:
-
-Age: Older players might have more experience, which could influence their ratings.
-
-Height and Weight: These physical attributes can affect performance, especially in aspects such as strength and stamina.
-
-Value: A player’s market value often reflects their overall skill and performance level.
-
-These features were selected as they likely have a direct or indirect impact on the player’s overall rating.
+The features chosen for predicting player ratings were selected based on their relevance to a player’s performance:
+	•	Age: Age is often associated with experience and peak physical performance, impacting player ratings.
+	•	Height and Weight: Physical attributes play a role in a player’s performance, influencing aspects like balance, stamina, and strength.
+	•	Value: The market value of a player can be an indicator of their skill and performance.
 
 Model Choice Explanation
 
-A Linear Regression model was chosen for predicting player ratings due to the following reasons:
-
-Simplicity: Linear regression is an effective baseline model for regression tasks where relationships between features and the target variable are assumed to be linear.
-
-Interpretability: The model coefficients provide insights into how each feature influences the predicted player rating.
-
-Given that the task involves predicting a continuous variable (overall rating), linear regression was an appropriate choice.
+A Linear Regression model was chosen for this prediction task:
+	•	Simplicity: Linear regression is a simple yet effective method for regression tasks where relationships between variables are assumed to be linear.
+	•	Interpretability: Linear regression offers clear coefficients, making it easy to understand the influence of different features on the player rating.
 
 Basic Performance Metrics
+	•	Mean Absolute Error (MAE): 1.58 – The predicted ratings were, on average, off by 1.58 points from the actual ratings.
+	•	R-squared (R²): 0.47 – The model explained 46.6% of the variance in player ratings, indicating that while the model performs well, there’s still room for improvement.
 
-After training the model, the following performance metrics were recorded:
-
-Mean Absolute Error (MAE): The MAE was 1.58, indicating that, on average, the model’s predictions were off by 1.58 rating points.
-
-R-squared (R²): The R² value was 0.466, meaning that approximately 46.6% of the variance in player ratings was explained by the chosen features. While reasonable, this suggests that additional features could improve the model’s performance.
+⸻
 
 Conclusion
 
-This analysis provided valuable insights into the factors influencing player ratings in the European Soccer Database. The predictive model demonstrated that player ratings can be estimated with reasonable accuracy using a simple linear regression approach. However, further improvements can be made by:
+Task 1: Ball Detection Model
+	•	The ball detection model successfully identified balls in images using the YOLOv8 object detection algorithm. Although the dataset was limited, the model performed well and can be improved with more data and hyperparameter tuning.
 
-Incorporating additional relevant features such as passing, dribbling, and defensive attributes.
+Task 2: Player Rating Prediction
+	•	The linear regression model for predicting player ratings showed reasonable performance with a MAE of 1.58 and an R² of 0.47. Future improvements can be made by adding more features or trying more complex models.
 
-Experimenting with more advanced models such as Decision Trees or Neural Networks.
-
-Applying feature engineering techniques to better capture player performance characteristics.
-
-This project successfully showcased a structured approach to player rating prediction using data exploration, visualization, and machine learning.
-
-
-
+Both tasks demonstrate the potential for leveraging machine learning in the field of soccer analytics, and there are opportunities to enhance these models through data expansion and feature engineering.
