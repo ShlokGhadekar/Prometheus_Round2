@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['Ball']
+
+roboflow:
+  workspace: myworkspace-tamkf
+  project: ball-detection-yd3qw
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/myworkspace-tamkf/ball-detection-yd3qw/dataset/3
