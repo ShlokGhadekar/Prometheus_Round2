@@ -1,0 +1,133 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2820
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .SFNS-Bold;\f1\fnil\fcharset0 .SFNS-Regular;\f2\fnil\fcharset0 HelveticaNeue-Bold;
+\f3\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;}
+{\colortbl;\red255\green255\blue255;\red14\green14\blue14;}
+{\*\expandedcolortbl;;\cssrgb\c6700\c6700\c6700;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs30 \cf2 Methodology for Ball Detection Dataset and Model Training
+\f1\b0\fs28 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 1. Dataset Creation
+\f1\b0\fs28 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Roboflow Dataset Generation
+\f1\b0 :\
+To create the Ball Detection dataset, I used Roboflow to upload and annotate images. The dataset was limited to a maximum of 20 images for this task, focusing on creating high-quality annotations for each image.\
+\pard\tqr\tx500\tx660\li660\fi-660\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	I utilized 
+\f2\b bounding boxes
+\f1\b0  to mark the balls in the images, as this is a common annotation technique for object detection tasks.\
+	\'95	For each image, I ensured the bounding boxes accurately covered the balls in the images.\
+	\'95	I also split the dataset into 
+\f2\b training
+\f1\b0  (13 images) and 
+\f2\b validation
+\f1\b0  (4 images) sets to evaluate the model\'92s performance on unseen data.\
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Exporting the Dataset
+\f1\b0 :\
+Once the annotations were completed, I exported the dataset from Roboflow in the YOLOv8 format, which is suitable for training object detection models. This format uses 
+\f3 .txt
+\f1  files for labels and 
+\f3 .jpg
+\f1  files for images, where each 
+\f3 .txt
+\f1  file corresponds to an image and contains the annotations in YOLO\'92s specific format (class, x_center, y_center, width, height).\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 2. Model Training
+\f1\b0\fs28 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Environment Setup
+\f1\b0 :\
+I set up the training environment in Google Colab to utilize free GPU resources for model training. Google Colab provides a convenient platform for training deep learning models with access to GPUs.\
+	\'95	
+\f2\b YOLOv8 Setup
+\f1\b0 :\
+I used the 
+\f2\b YOLOv8
+\f1\b0  model for training, as it is one of the most efficient and widely used models for object detection tasks. YOLOv8 is known for its speed and accuracy, making it a good choice for real-time applications like ball detection.\
+	\'95	
+\f2\b Training Configuration
+\f1\b0 :\
+\pard\tqr\tx500\tx660\li660\fi-660\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	I used the 
+\f2\b YOLOv8 model
+\f1\b0 \'92s built-in functionalities to train the model. The training process involves loading the dataset, setting the appropriate configuration (e.g., input size, batch size, epochs), and optimizing the model weights using a suitable optimizer like Adam.\
+	\'95	The model was trained for a specified number of epochs, with both training and validation data used to evaluate its performance.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 3. Model Evaluation and Fine-Tuning
+\f1\b0\fs28 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Metrics
+\f1\b0 :\
+During the training process, I monitored key metrics such as 
+\f2\b mean average precision (mAP)
+\f1\b0  and 
+\f2\b IoU (Intersection over Union)
+\f1\b0 , which indicate how well the model is detecting objects (balls) in the images.\
+\pard\tqr\tx500\tx660\li660\fi-660\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	If the model\'92s performance on the validation set was unsatisfactory, I adjusted hyperparameters (like learning rate, batch size, etc.) and retrained the model until the desired results were achieved.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 4. Inference and Testing
+\f1\b0\fs28 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Model Inference
+\f1\b0 :\
+After training, I used the model to perform inference on new, unseen images. This step allows us to evaluate how well the model generalizes to new data.\
+\pard\tqr\tx500\tx660\li660\fi-660\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	I used a test image and ran the trained model to predict the location of the ball in the image. The model produced bounding boxes around the detected ball, which were then visualized on the image to confirm the accuracy of the detection.\
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Prediction Results
+\f1\b0 :\
+I observed the output, which includes the coordinates of the bounding boxes and the class label (ball). The model was able to successfully detect balls in the test images, indicating that the training was effective.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 5. Model Deployment
+\f1\b0\fs28 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Model Saving
+\f1\b0 :\
+The trained model was saved in a standard format (e.g., 
+\f3 .pt
+\f1  for PyTorch models), which can later be used for deployment in a real-time application or further testing.\
+	\'95	
+\f2\b Download and Usage
+\f1\b0 :\
+After training, I downloaded the model file and saved it for future use. This trained model can now be deployed for ball detection in various settings.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 6. Future Improvements
+\f1\b0\fs28 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Dataset Expansion
+\f1\b0 :\
+Since the dataset was limited to only 20 images, expanding the dataset with more annotated images could significantly improve the model\'92s performance, especially in real-world scenarios.\
+	\'95	
+\f2\b Data Augmentation
+\f1\b0 :\
+To increase the diversity of the training set, data augmentation techniques such as flipping, rotation, and scaling could be applied to generate more variations of the ball images.\
+	\'95	
+\f2\b Hyperparameter Tuning
+\f1\b0 :\
+Further hyperparameter tuning could be done to improve the model\'92s accuracy, such as adjusting the learning rate, batch size, or the number of epochs.\
+}

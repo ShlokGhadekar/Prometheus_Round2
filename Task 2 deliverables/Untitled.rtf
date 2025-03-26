@@ -1,0 +1,120 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2820
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .SFNS-Bold;\f1\fnil\fcharset0 .SFNS-Regular;\f2\fnil\fcharset0 HelveticaNeue-Bold;
+\f3\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red14\green14\blue14;}
+{\*\expandedcolortbl;;\cssrgb\c6700\c6700\c6700;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs30 \cf2 Methodology and Findings
+\f1\b0\fs28 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 1. Data Exploration
+\f1\b0\fs28 \
+\
+The first step in the analysis was to explore the available data in the 
+\f2\b European Soccer Database
+\f1\b0 . The database contains multiple tables, including information about players, matches, teams, and leagues. The focus was on the 
+\f2\b Player_Attributes
+\f1\b0  table, which provides information such as player ratings, attributes, and other related details like preferred foot, attacking and defensive work rates, and specific player skills.\
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	We first checked the structure of the data, examining the columns and checking for missing values or duplicates.\
+	\'95	Then, basic statistics for key variables like player ratings, potential, and physical attributes (height, weight, etc.) were calculated to get an overall understanding of the data.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 2. Visualizations
+\f1\b0\fs28 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Age Distribution
+\f1\b0 : The age distribution of players was visualized to understand the demographics of the dataset and analyze whether older or younger players tend to have better ratings.\
+	\'95	
+\f2\b Rating Distribution
+\f1\b0 : A histogram was used to visualize how player ratings are distributed, helping to observe any skewness in the ratings or if the data is evenly spread out.\
+	\'95	
+\f2\b Correlation Heatmap
+\f1\b0 : A heatmap of the correlations between different player attributes, such as passing, dribbling, and shooting, helped identify relationships between variables and the potential importance of certain features for player performance.\
+\
+These visualizations provided insights into the dataset and helped inform the selection of features for the predictive model.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs28 \cf2 \
+
+\f0\b\fs30 Machine Learning Part: Player Rating Prediction
+\f1\b0\fs28 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 Feature Selection Justification
+\f1\b0\fs28 \
+\
+For the player rating prediction model, the features chosen were selected based on their relevance to the player\'92s performance and overall rating. The features included:\
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Age
+\f1\b0 : The age of the player might correlate with their experience and physical peak, potentially influencing their performance.\
+	\'95	
+\f2\b Height and Weight
+\f1\b0 : These physical attributes can play a role in a player\'92s performance, particularly in physical aspects like stamina, balance, and strength.\
+	\'95	
+\f2\b Value
+\f1\b0 : The market value of the player could be a reflection of their skill and performance, making it relevant to predicting ratings.\
+\
+These features were selected because they are likely to have a direct or indirect impact on the player\'92s overall rating.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 Model Choice Explanation
+\f1\b0\fs28 \
+\
+For the predictive model, a 
+\f2\b Linear Regression
+\f1\b0  model was chosen. The reason for this choice is:\
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Simplicity
+\f1\b0 : Linear regression is a simple yet effective method for regression tasks where the relationship between features and the target variable (player rating) is assumed to be linear.\
+	\'95	
+\f2\b Interpretability
+\f1\b0 : Linear regression provides coefficients that show the impact of each feature on the target variable, making the model more interpretable and useful for understanding how different factors contribute to player ratings.\
+\
+Given that we are predicting a continuous value (player rating), linear regression is a straightforward and interpretable choice.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs26 \cf2 Basic Performance Metrics
+\f1\b0\fs28 \
+\
+After training the model, the following performance metrics were calculated:\
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	
+\f2\b Mean Absolute Error (MAE)
+\f1\b0 : This metric measures the average magnitude of errors in the model\'92s predictions. The MAE for the model was found to be 
+\f2\b 1.58
+\f1\b0 , indicating that, on average, the predicted player rating was off by about 1.58 points from the actual rating.\
+	\'95	
+\f2\b R-squared (R\'b2)
+\f1\b0 : The R\'b2 value was calculated as 
+\f2\b 0.466
+\f1\b0 . This means that the model explains about 46.6% of the variance in player ratings, which is a reasonable result considering the complexity of player performance prediction. It shows that while the model performs decently, there is still a substantial amount of variance that cannot be explained by the chosen features.\
+\
+These performance metrics indicate that the model is capable of making relatively accurate predictions, though improvements could be made by incorporating more features or experimenting with more complex models (e.g., decision trees or ensemble methods).\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs24 \cf0 \
+\uc0\u11835 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f1\fs28 \cf2 \
+
+\f0\b\fs30 Conclusion
+\f1\b0\fs28 \
+\
+The analysis of the European Soccer Database provided valuable insights into player attributes and their relationship with overall ratings. The predictive model demonstrated the feasibility of predicting player ratings based on available attributes, with a reasonable level of accuracy. However, the model\'92s performance could be improved further with additional feature engineering or more advanced machine learning techniques.}
